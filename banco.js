@@ -28,12 +28,12 @@ class Cliente {
                     seu saldo agora é de ${this.saldo}`)
     }
     transferenciaPix() {
-        
+
         let pixtransferencia = (read.question("digite a chave pix na qual deseja enviar o valor"))
         let valor = read.question('qual valor deseja enviar?')
         this.saldo -= valor
         console.log(`você fez um pix no valor de ${valor} reais, para a chave ${pixtransferencia}
-                    seu saldo agora é de: ${saldo} reais`)
+                    seu saldo agora é de: ${this.saldo} reais`)
     }
 
 
@@ -51,6 +51,28 @@ class Cliente {
 }
 
 matheus = new Cliente('Matheus Fantini Teixeira', 27, 09600978999, 3200)
-
-
-console.log(matheus.fazerTransferencia())
+verdadeiro = true
+while (verdadeiro) {
+    caixaEletronico = read.question(`o que deseja fazer?
+digite 1 - para ver os dados da conta
+digite 2 - para depositar dinheiro
+digite 3 - para fazer uma transferencia
+`)
+    if (caixaEletronico === "1") {
+        matheus.mostrarDados()
+    }
+    else if (caixaEletronico === "2") {
+        valor = read.question('qual valor você deseja depositar?')
+        matheus.adicionarSaldo(valor)
+    }
+    else if (caixaEletronico === "3") {
+        matheus.fazerTransferencia()
+    }
+    continuar = read.question('deseja fazer outra operação?' + ' S - SIM / N - Não')
+    if (continuar === "S") {
+        continue;
+    }
+    else {
+        verdadeiro = false
+    }
+}
